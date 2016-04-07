@@ -222,7 +222,7 @@ body {
     font-size: 1em !important;
     color: #000 !important;
     line-height: normal !important;
-    margin: 6.666667px 0 2.666667px !important;
+    margin: 6.666667px 0 .8em 14px !important;
     text-align: left !important;
     text-indent: 0 !important;
 }
@@ -246,6 +246,7 @@ p.bodytext {
     font-size: 1em;
     line-height: 1.25em;
     margin-bottom: 1em;
+    margin-left: 14px;
 }
 
 .abstracthead {
@@ -449,7 +450,7 @@ p.bodytext {
     color: #000;
     line-height: 1.25em;
     padding: 0;
-    margin: 0 0 1em;
+    margin: 0 0 1em 14px;
     text-align: left;
 }
 
@@ -524,6 +525,7 @@ a.cross-referencetemplate:active {
 }
 
 a.cross-referencetemplate:visited {
+    color: #01B187 !important;
     font-size: 1em;
     line-height: 22px;
     text-decoration: none;
@@ -536,7 +538,7 @@ p.list a {
     text-decoration: underline;
 }
 
-.toc a,.minitocitem a {
+.toc a,.minitocitem a,.minitoclist a {
     color: #000;
     text-decoration: underline;
 }
@@ -596,7 +598,7 @@ ul.listbullet {
     list-style-type: Disc !important;
     list-style-image: none !important;
     list-style-position: outside !important;
-    margin: 0 0 1em 22px !important;
+    margin: 0 0 1em 30px !important;
     padding: 0 !important;
 }
 
@@ -778,6 +780,7 @@ li.alertbullet {
     display: block;
     margin-top: 7px;
     margin-bottom: 7px;
+    margin-left: 14px;
 }
 
 .figurewide {
@@ -804,6 +807,7 @@ td[width*="558"] {
 .tableintopic {
     max-width: 100% !important;
     width: auto !important;
+    margin-left: 14px;
 }
 
 .tableheading {
@@ -1070,23 +1074,6 @@ li.tablelistbullet {
     background-color: inherit;
     vertical-align: baseline;
     padding: 0;
-}
-
-.errortext-headingcontinued {
-    font-family: 'Metric',Arial !important;
-    font-style: normal !important;
-    font-variant: normal !important;
-    font-weight: 700 !important;
-    font-size: 1em !important;
-    color: #000 !important;
-    background-color: inherit !important;
-    background-attachment: scroll !important;
-    background-position: 0 0 !important;
-    vertical-align: baseline !important;
-    margin: 6.666667px 0 2.666667px !important;
-    padding: 0 !important;
-    text-align: left !important;
-    text-indent: 0 !important;
 }
 
 .oemheading4 {
