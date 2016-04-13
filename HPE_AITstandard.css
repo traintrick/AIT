@@ -1,19 +1,7 @@
 /*
 Hewlett-Packard Company
-Copyright 2013 Hewlett-Packard Development Company, L.P.
-Written for HP Enterprise Group Knowledge Management
-===========
-Table of Contents
-===========
-- font faces
-- css reset
-- html & body
-- header
-- divs
-- text
-- lists
-- media
-- tables
+© Copyright 2015, 2016 Hewlett Packard Enterprise Development LP
+Written for Hewlett Packard Enterprise, Knowledge Management
 ===========
 Colors
 ===========
@@ -123,6 +111,7 @@ body {
     width: 1000px;
 }
 
+/*Media queries*/
 @media all and (max-width:980px) {
     #body,#aitcontent {
         width: 96% !important;
@@ -130,6 +119,14 @@ body {
     }
 }
 
+@media all and (max-width: 990px) {
+    .qrcode {
+        position: absolute;
+        right: 9999px;
+    }
+}
+
+/*Strips the header and footer when printing*/
 @media print {
     #header,#footer {
         display: none;
@@ -140,7 +137,7 @@ body {
     }
 }
 
-/* AIT divs */
+/* AIT stuff */
 .tasktitle {
     padding-top: 11px;
     padding-bottom: 11px;
@@ -153,7 +150,7 @@ body {
     padding-bottom: 11px;
 }
 
-/*Typography*/
+/*AIT styles and typography*/
 .heading1,h1,.h1 {
     color: #000 !important;
     font-family: "Metric",arial !important;
@@ -739,7 +736,7 @@ li.alertbullet {
     margin: 0 0 .5em !important;
 }
 
-/* media */
+/* media objects*/
 .qrcode {
     font-family: 'Metric',Arial;
     font-size: 12px;
@@ -752,13 +749,6 @@ li.alertbullet {
     right: -30px;
     float: right;
     text-align: left;
-}
-
-@media all and (max-width: 990px) {
-    .qrcode {
-        position: absolute;
-        right: 9999px;
-    }
 }
 
 .video-container {
@@ -804,6 +794,11 @@ td[width*="558"] {
     border-bottom: 1px solid #01B187 !important;
 }
 
+/*Highlights the table rows with a light grey background*/
+tr:hover {
+    background-color: #eee;
+}
+
 .tableintopic {
     max-width: 100% !important;
     width: auto !important;
@@ -841,7 +836,7 @@ td[width*="558"] {
     font-size: 1em;
     color: #000;
     line-height: normal;
-    margin: 0 0 1em 4px;
+    margin: 0 0 1em 14px;
 }
 
 .tablelistnumberrestart {
@@ -1118,16 +1113,12 @@ li.tablelistbullet {
     height: 36px;
 }
 
-.hplogo {
-    background-color: #425563;
-    display: block;
-    margin: -1em -1em 10em;
-}
-
+/*For guides: floats the nav arrow at the top of the page to the right*/
 img[src*="124.gif"] {
     float: right;
 }
 
+/*Prevents listed images from floating*/
 li img[src*="124"] {
     float: none;
 }
@@ -1141,10 +1132,39 @@ li img[src*="124"] {
     padding: 0;
 }
 
+/*The table filter is only in the matrix docs*/
 .tableFilter {
     color: #000 !important;
     font-family: "Metric",Arial !important;
     font-size: 1em !important;
     line-height: 20px !important;
     padding: 3px 0 3px 8px !important;
+    border-color: #000;
+    border-style: solid;
+    border-width: 0 0 1px;
+    -webkit-appearance: none;
+    width: 230px;
+}
+
+/*The print button is only in the matrix docs*/
+.printbtn {
+    border: 3px solid #00b388;
+    border-radius: 0;
+    color: #000;
+    font-family: metric;
+    font-size: 16px;
+    line-height: 2.5;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    width: auto;
+}
+
+/*The search icon is only in the matrix docs*/
+#searchicon {
+    margin-bottom: 0;
+    margin-left: -31px;
+    width: 23px;
 }
