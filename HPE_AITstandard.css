@@ -795,7 +795,7 @@ td[width*="558"] {
 }
 
 /*Highlights the table rows with a light grey background*/
-tr:hover {
+.tableintopic tr:hover {
     background-color: #eee;
 }
 
@@ -1100,6 +1100,12 @@ li.tablelistbullet {
     padding: 0 !important;
     text-align: left !important;
     text-indent: 0 !important;
+}
+
+.hplogo {
+    background-color: #425563;
+    display: block;
+    margin: -1em -1em 10em;
 }
 
 .logo {
