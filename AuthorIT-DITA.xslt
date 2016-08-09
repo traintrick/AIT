@@ -1091,10 +1091,10 @@ Move any content that belongs with that heading into the section.</xsl:with-para
   <userinput><xsl:apply-templates select="*|text()|comment()"/></userinput>
 </xsl:template>
 
-
+<!-- Removing italics per HP SDL DTD
 <xsl:template match="em">
   <i><xsl:apply-templates select="*|text()|comment()"/></i>
-</xsl:template>
+</xsl:template> -->
 
 <xsl:template match="strong[@class='buttons']">
   <!-- 2005/07/11 AN Reverse nesting of xref and uicontrol -->
@@ -1822,10 +1822,15 @@ There is a comment next to the phrase with the span's class value.</xsl:with-par
   <xsl:value-of select="translate($inputString, $upperCase, $lowerCase)"/>
 </xsl:template>
 
-<!-- =========== Removing em italic elements =========== -->
+<!-- =========== If italics exist, replace with cite. If  =========== -->
 
 <xsl:template match="node()/em[@class='italics']">
-    <cite><xsl:apply-templates select="*|text()|comment()"/></cite>
+    <xsl:choose>
+	    <xsl:when test="following-sibling::a[@class='urlhypertextlinktemplate'] or preceding-sibling::a[@class='urlhypertextlinktemplate']">
+		    <cite><xsl:apply-templates select="*|text()|comment()"/></cite>
+        </xsl:when>
+		<xsl:otherwise><xsl:apply-templates select="*|text()|comment()"/></xsl:otherwise>			
+	</xsl:choose>
 </xsl:template>
 
 <!-- =========== Mark alerts for updating =========== -->
@@ -1834,7 +1839,7 @@ There is a comment next to the phrase with the span's class value.</xsl:with-par
 </xsl:template>
 
 <xsl:template match="node()/p[@class='alertspacerbefore']">
-<xsl:comment>REQUIRED-CLEANUP-ALERT: Recreate the alert, conref it in, and then delete this alert.</xsl:comment>
+<xsl:comment>REQUIRED-CLEANUP-ALERT: Recreate this alert in another topic, and then conref in what you created.</xsl:comment>
 </xsl:template>
 
 
