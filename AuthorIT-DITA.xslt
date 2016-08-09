@@ -1829,7 +1829,7 @@ There is a comment next to the phrase with the span's class value.</xsl:with-par
 	    <xsl:when test="following-sibling::a[@class='urlhypertextlinktemplate'] or preceding-sibling::a[@class='urlhypertextlinktemplate']">
 		    <cite><xsl:apply-templates select="*|text()|comment()"/></cite>
         </xsl:when>
-		<xsl:otherwise><xsl:apply-templates select="*|text()|comment()"/></xsl:otherwise>			
+		<xsl:otherwise><xsl:comment>REQUIRED-CLEANUP-CITE: Separate the book title and URL location, then cite the book and verify the URL</xsl:comment><xsl:apply-templates select="*|text()|comment()"/></xsl:otherwise>			
 	</xsl:choose>
 </xsl:template>
 
