@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--  h2d.xsl 
  | Migrate XHTML content into DITA topics
  |
@@ -521,7 +522,7 @@
     <!-- If the target is a web site, do not change extension to .dita -->
     <xsl:when test="starts-with(@href,'http:') or starts-with(@href,'https:') or
                     starts-with(@href,'ftp:')">
-      <xsl:attribute name="href"><xsl:value-of select="@href"/></xsl:attribute>
+      <xsl:attribute name="href"><xsl:value-of select="@href" /></xsl:attribute>
       <xsl:attribute name="scope">external</xsl:attribute>
       <xsl:attribute name="format">
         <xsl:choose>
@@ -550,7 +551,7 @@
       <xsl:attribute name="href"><xsl:value-of select="$infile-reference"/></xsl:attribute>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:attribute name="href"><xsl:value-of select="@href"/></xsl:attribute>
+      <xsl:attribute name="href"><xsl:value-of select="@href" /></xsl:attribute>
       <xsl:attribute name="format">
         <xsl:choose>
           <xsl:when test="contains(@href,'.pdf') or contains(@href,'.PDF')">pdf</xsl:when>
@@ -1804,6 +1805,38 @@ There is a comment next to the phrase with the span's class value.</xsl:with-par
   <p><u><xsl:apply-templates select="*|text()|comment()"/></u></p>
 </xsl:template>
 
+<!-- =========== Change strong elements that are children to a elements to bold =========== -->
+
+<xsl:template match="body/p/a/strong">
+  <b>
+    <xsl:attribute name="remapped"><xsl:value-of select="name()"/></xsl:attribute>
+    <xsl:apply-templates select="*|text()|comment()"/>
+  </b>
+</xsl:template>
+
+<!-- lowerCase function -->
+<xsl:param name="upperCase">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:param>
+<xsl:param name="lowerCase">abcdefghijklmnopqrstuvwxyz</xsl:param>
+<xsl:template name="lowerCase">
+  <xsl:param name="inputString"/>
+  <xsl:value-of select="translate($inputString, $upperCase, $lowerCase)"/>
+</xsl:template>
+
+<!-- =========== Removing em italic elements =========== -->
+
+<xsl:template match="node()/em[@class='italics']">
+    <cite><xsl:apply-templates select="*|text()|comment()"/></cite>
+</xsl:template>
+
+<!-- =========== Mark alerts for updating =========== -->
+<!-- Remove the alert spacers -->
+<xsl:template match="node()/p[@class='alertspacerafter']">
+</xsl:template>
+
+<xsl:template match="node()/p[@class='alertspacerbefore']">
+<xsl:comment>REQUIRED-CLEANUP-ALERT: Recreate the alert, conref it in, and then delete this alert.</xsl:comment>
+</xsl:template>
+
 
 <!-- case of deprecated elements with no clear migrational intent -->
 
@@ -1866,15 +1899,6 @@ The element has been placed in a required-cleanup element.</xsl:with-param>
       <xsl:apply-templates select="*|text()|comment()"/>
     </ph>
   </required-cleanup>
-</xsl:template>
-
-
-<!-- lowerCase function -->
-<xsl:param name="upperCase">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:param>
-<xsl:param name="lowerCase">abcdefghijklmnopqrstuvwxyz</xsl:param>
-<xsl:template name="lowerCase">
-  <xsl:param name="inputString"/>
-  <xsl:value-of select="translate($inputString, $upperCase, $lowerCase)"/>
 </xsl:template>
 
 </xsl:stylesheet>
